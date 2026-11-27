@@ -119,6 +119,12 @@ struct HelpView: View {
                         }
                     }
                 }
+                Divider()
+                VStack(alignment: .leading, spacing: 8) {
+                    Label(L("ウェブサイト・アップデート", "Website and Updates"), systemImage: "globe")
+                        .font(.headline)
+                    AboutLinksView()
+                }
             }
             .padding(28)
             .frame(maxWidth: .infinity, alignment: .leading)

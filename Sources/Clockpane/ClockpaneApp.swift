@@ -60,6 +60,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if let i = args.firstIndex(of: "--settings-tab"), i + 1 < args.count, let tab = SettingsTab(rawValue: args[i + 1]) {
             SettingsNavigation.shared.tab = tab
         }
+        if args.contains("--test-check-updates") {
+            UpdateChecker.shared.check()
+        }
         if args.contains("--test-preset-editor") {
             SettingsNavigation.shared.tab = .alarms
             AlarmSettingsView.openPresetEditorForTest = true
@@ -159,6 +162,19 @@ struct ClockpaneApp: App {
             CommandGroup(replacing: .help) {
                 Button(L("Clockpane ヘルプ", "Clockpane Help")) { AppWindows.shared.showHelp() }
                     .keyboardShortcut("?")
+                Divider()
+                Button(L("Clockpane のウェブサイト", "Clockpane Website")) { AppLinks.open(AppLinks.website) }
+                Button(L("不具合の報告・要望…", "Report an Issue…")) { AppLinks.open(AppLinks.issues) }
+                Button(L("deskcraft のほかのツール", "More deskcraft Tools")) { AppLinks.open(AppLinks.organization) }
+                Divider()
+                Button(L("アップデートを確認…", "Check for Updates…")) {
+                    AppWindows.shared.showSettings(tab: .general)
+                    UpdateChecker.shared.check()
+                }
+            }
+            // 「Clockpane について」：版番号の下にウェブサイトへのリンクを出す
+            CommandGroup(replacing: .appInfo) {
+                Button(L("Clockpane について", "About Clockpane")) { AppLinks.showAboutPanel() }
             }
         }
     }

@@ -20,6 +20,17 @@
 1. Open the downloaded `Clockpane.dmg`.
 2. Drag **Clockpane** to **Applications**.
 
+### Install with Homebrew
+```bash
+brew tap deskcraft/tap
+brew trust deskcraft/tap
+brew install --cask clockpane
+```
+The second line trusts the tap, which Homebrew 7 and later require. To upgrade later: `brew upgrade --cask clockpane`.
+
+### Checking for updates
+Choose Help → Check for Updates… (or Settings → General) to see whether a new version is available. Clockpane only contacts GitHub when you click the button and sends no personal information.
+
 ### Opening for the first time
 This app is not signed or notarized by Apple, so the first launch needs these steps:
 

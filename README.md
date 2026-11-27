@@ -20,6 +20,17 @@
 1. ダウンロードした `Clockpane.dmg` を開きます。
 2. **Clockpane** を **「アプリケーション」** にドラッグします。
 
+### Homebrew でインストール
+```bash
+brew tap deskcraft/tap
+brew trust deskcraft/tap
+brew install --cask clockpane
+```
+2行目は、Homebrew 7 以降で必要な「この tap を信頼する」操作です。最新版にするときは `brew upgrade --cask clockpane` です。
+
+### 新しい版の確認
+アプリのメニュー「ヘルプ」→「アップデートを確認…」（または設定の「一般」）で、新しい版があるか確かめられます。ボタンを押したときだけ GitHub に問い合わせ、利用者の情報は送りません。
+
 ### 初めて開くとき
 このアプリは Apple の有料の署名（公証）をしていないため、初めて開くときだけ次の手順が必要です。
 

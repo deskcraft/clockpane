@@ -278,6 +278,10 @@ struct GeneralPage: View {
                 }
             }
 
+            Section(L("Clockpane について", "About Clockpane")) {
+                AboutLinksView()
+            }
+
             Section {
                 HStack {
                     Button(L("ヘルプを表示", "Show Help")) { AppWindows.shared.showHelp() }
