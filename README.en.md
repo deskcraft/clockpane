@@ -5,8 +5,8 @@
 [日本語](README.md)
 
 <p align="center">
-  <img src="docs/images/clock-info.png" width="300" alt="Clock with a timer, a deadline and world clocks below it">
-  <img src="docs/images/alert.png" width="260" alt="Event alert with location and meeting link">
+  <img src="docs/images/clock-info-en.png" width="300" alt="Clock with a timer, a deadline and world clocks below it">
+  <img src="docs/images/alert-en.png" width="260" alt="Event alert with location and meeting link">
 </p>
 
 ## Download
@@ -57,14 +57,14 @@ This removes the “downloaded from the internet” mark. Run it, then open the 
 - Size and opacity, always on top, drag to move
 - Hover over the center of the clock to show a handle that opens a menu right there. Clicks anywhere else pass through the clock, so it never gets in your way.
 
-<p align="center"><img src="docs/images/designs.png" width="640" alt="17 designs"></p>
+<p align="center"><img src="docs/images/designs-en.png" width="640" alt="17 designs"></p>
 
 ### Alarms and alert styles
 - Time, name, repeat (once, every day, weekdays, chosen days), snooze
 - Combine **alert styles**: glow, blink or enlarge the clock, sound (type, volume, repeats), Notification Center, speech (voice and speed)
 - Standard (Recommended), Quiet and Strong are built in, and you can create your own (☆ to favorite)
 
-<p align="center"><img src="docs/images/settings-alert-style.png" width="600" alt="Alert style settings"></p>
+<p align="center"><img src="docs/images/settings-alert-style-en.png" width="600" alt="Alert style settings"></p>
 
 ### Timer, Pomodoro and chime
 - Quick timers (1 min to 1 hour) or any length. Remaining time shows as a ring on the clock and below it
@@ -79,7 +79,7 @@ This removes the “downloaded from the internet” mark. Run it, then open the 
 ### Other
 - Japanese and English, open at login, show or hide the Dock icon
 
-<p align="center"><img src="docs/images/settings-clock.png" width="560" alt="Settings"></p>
+<p align="center"><img src="docs/images/settings-clock-en.png" width="560" alt="Settings"></p>
 
 ## Permissions
 | Permission | Used for | Asked when |
