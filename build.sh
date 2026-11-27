@@ -1,6 +1,8 @@
 #!/bin/bash
 # Clockpane.app をビルドする。
-#   ./build.sh            → build/Clockpane.app を作成
+#   ./build.sh            → build/app.noindex/Clockpane.app を作成
+#                            （名前の最後が .noindex のフォルダは Spotlight が無視するので、
+#                              「アプリケーション」の Clockpane と二重に検索に出ない）
 #   ./build.sh install    → さらに /Applications にコピーして起動
 #   ./build.sh dmg        → さらに配布用の build/Clockpane-<版>.dmg を作成
 # 版番号は環境変数 VERSION で指定できる（例：VERSION=1.0.0 ./build.sh dmg）。
@@ -13,8 +15,8 @@ ARCHS=(--arch arm64 --arch x86_64)
 swift build -c release "${ARCHS[@]}"
 BIN="$(swift build -c release "${ARCHS[@]}" --show-bin-path)/Clockpane"
 
-APP="build/Clockpane.app"
-rm -rf "$APP"
+APP="build/app.noindex/Clockpane.app"
+rm -rf "$APP" "build/Clockpane.app"   # 以前の置き場所に残っていれば消す
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp "$BIN" "$APP/Contents/MacOS/"
 cp "Resources/Info.plist" "$APP/Contents/"

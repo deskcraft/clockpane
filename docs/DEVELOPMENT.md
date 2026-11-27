@@ -5,7 +5,7 @@
 必要なもの：macOS 15 以降、Xcode（Swift 6 のツールチェーン）。
 
 ```bash
-./build.sh            # build/Clockpane.app を作成
+./build.sh            # build/app.noindex/Clockpane.app を作成（Spotlight に出ない場所）
 ./build.sh install    # さらに /Applications にコピーして起動
 ./build.sh dmg        # さらに配布用の build/Clockpane-<版>.dmg と build/Clockpane.dmg を作成
 VERSION=1.2.0 ./build.sh dmg   # 版番号を指定して作る
