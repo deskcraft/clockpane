@@ -33,7 +33,7 @@ iconutil -c icns -o "$APP/Contents/Resources/AppIcon.icns" "build/AppIcon.iconse
 
 # 署名なし配布のため、仮の署名（ad-hoc）だけを付ける
 codesign --force --sign - "$APP" >/dev/null
-echo "作成しました: $PWD/$APP（版 $VERSION_STRING）"
+echo "作成しました: ${PWD}/${APP}（版 ${VERSION_STRING}）"
 
 case "${1:-}" in
 install)
@@ -46,7 +46,7 @@ install)
     rm -rf "$HOME/Applications/Clockpane.app"
     rm -rf "$DEST/Clockpane.app"
     cp -R "$APP" "$DEST/"
-    echo "インストールしました: $DEST/Clockpane.app"
+    echo "インストールしました: ${DEST}/Clockpane.app"
     open "$DEST/Clockpane.app"
     echo "起動しました"
     ;;
@@ -62,6 +62,6 @@ dmg)
     rm -rf "$STAGE"
     # GitHub の「いつも最新版」の URL で使う、版番号なしの名前のコピーも作る
     cp "$DMG" "build/Clockpane.dmg"
-    echo "作成しました: $PWD/$DMG と $PWD/build/Clockpane.dmg"
+    echo "作成しました: ${PWD}/${DMG} と ${PWD}/build/Clockpane.dmg"
     ;;
 esac
