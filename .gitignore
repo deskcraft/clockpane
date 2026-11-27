@@ -1,0 +1,11 @@
+# Swift Package Manager / Xcode
+.build/
+.swiftpm/
+*.xcodeproj/xcuserdata/
+DerivedData/
+
+# build.sh の出力（.app・.dmg・アイコン）
+build/
+
+# macOS
+.DS_Store

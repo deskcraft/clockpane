@@ -1,0 +1,60 @@
+# 版のタグ（例：v1.0.0）を送ると、macOS でビルドして .dmg を作り、GitHub の Releases に置く。
+# 手動で動かした場合（workflow_dispatch）は、Releases には置かず、Actions の成果物として .dmg を残す。
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use the newest Xcode
+        run: |
+          XCODE=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+          swift --version
+
+      - name: Build app and .dmg
+        run: |
+          if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
+            VERSION="${GITHUB_REF_NAME#v}"
+          else
+            VERSION="0.0.0-dev.${GITHUB_RUN_NUMBER}"
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          VERSION="$VERSION" BUILD_NUMBER="$GITHUB_RUN_NUMBER" ./build.sh dmg
+
+      - name: Publish to Releases
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          NOTES="Clockpane ${VERSION}
+
+          ダウンロード：下の **Clockpane.dmg** を開き、Clockpane を「アプリケーション」にドラッグしてください。
+          この版は Apple の署名がないため、初めて開くときは README の「初めて開くとき」の手順が必要です。
+
+          Download **Clockpane.dmg** below, open it, and drag Clockpane to Applications.
+          This build is not signed by Apple, so follow “Opening for the first time” in the README on first launch."
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" build/Clockpane.dmg "build/Clockpane-${VERSION}.dmg" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" build/Clockpane.dmg "build/Clockpane-${VERSION}.dmg" \
+              --title "Clockpane ${VERSION}" --notes "$NOTES"
+          fi
+
+      - name: Keep the .dmg as a build artifact
+        if: github.ref_type != 'tag'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Clockpane-${{ env.VERSION }}
+          path: build/Clockpane-*.dmg
