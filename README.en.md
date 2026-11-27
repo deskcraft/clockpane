@@ -1,4 +1,4 @@
-# Clockpane
+# <img src="docs/images/icon.png" width="48" align="top" alt=""> Clockpane
 
 **A clock for your macOS desktop.** It can also show alarms, a timer, Pomodoro sessions, your next calendar event, and world clocks.
 

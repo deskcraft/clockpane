@@ -1,4 +1,4 @@
-# Clockpane
+# <img src="docs/images/icon.png" width="48" align="top" alt=""> Clockpane
 
 **macOS のデスクトップに置く時計アプリ**です。アラーム、タイマー、ポモドーロ、カレンダーの次の予定、世界時計もまとめて表示できます。
 
